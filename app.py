@@ -25,9 +25,6 @@ You are an expert programmer in all programming languages. Translate the code to
 """
 
 
-
-
-
 def convert_code(code, lang):
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -65,4 +62,4 @@ def convert():
 
 # 5. 启动应用程序
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
