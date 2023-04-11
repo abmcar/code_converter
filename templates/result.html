@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>代码转换结果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        .code-block {
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background-color: #3E8E41;
+        }
+    </style>
+</head>
+<body>
+<div class="code-block">
+    <h2>Python 代码：</h2>
+    <pre id="python-code">{{ python_code }}</pre>
+    <button class="copy-btn" onclick="copyToClipboard('python-code')">复制</button>
+</div>
+
+<div class="code-block">
+    <h2>Java 代码：</h2>
+    <pre id="java-code">{{ java_code }}</pre>
+    <button class="copy-btn" onclick="copyToClipboard('java-code')">复制</button>
+</div>
+
+<div class="code-block">
+    <h2>C++ 代码：</h2>
+    <pre id="cpp-code">{{ cpp_code }}</pre>
+    <button class="copy-btn" onclick="copyToClipboard('cpp-code')">复制</button>
+</div>
+
+<script>
+    function copyToClipboard(id) {
+        var copyText = document.getElementById(id);
+        var range = document.createRange();
+        range.selectNode(copyText);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+
+        var btn = document.querySelector('#' + id + ' + .copy-btn');
+        btn.innerHTML = '已复制';
+        setTimeout(function() {
+            btn.innerHTML = '复制';
+        }, 2000);
+    }
+</script>
+</body>
+</html>
